@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="./runtime-dom.global.js"></script>
+    <!-- <script src="../../../node_modules/@vue/runtime-dom/dist/runtime-dom.global.js"></script> -->
+    <script>
+        // node_modules\@vue\compiler-dom\dist\compiler-dom.global.js
+        const {reactive, renderOptions,createRenderer,h,render,Text,Fragment,ref,createElementVnode:_createElementVnode, openBlock : _openBlock ,createElementBlock : _createElementBlock ,toDisplayString : _toDisplayString} = VueRuntimeDom
+        const Comp = {
+            data() {
+                return {
+                    state:{
+                        name:'sssss'
+                    }
+                }
+            },
+            setup(){
+                const state = reactive({name:'qws'})
+                setTimeout(() =>{
+                    state.name = "瞿文松"
+                },3_000)
+                return {
+                    state
+                }
+            },
+            render(_ctx){
+                let vnode = (_openBlock(),_createElementBlock('div',null,[
+                _createElementVnode('h1',null,"hello"),
+                _createElementVnode("h6",null,_toDisplayString(_ctx.state.name),1)
+                ]))
+                console.log(vnode)
+
+                return vnode
+
+            
+            }
+
+        }
+
+       
+
+        render(h(Comp),app)
+       
+        // function fun1(){
+        //      return 1
+        // }
+        // function fun2(){
+        //     return 2
+        // }
+        // let vnode = (fun1(),fun2())
+
+        // console.log("🚀 ~ file: index.html ~ line 48 ~ vnode", vnode) // 结果 2
+
+
+    </script>
+    
+</body> 
+</html>

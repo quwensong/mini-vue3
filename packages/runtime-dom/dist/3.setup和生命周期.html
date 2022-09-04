@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="./runtime-dom.global.js"></script>
+    <!-- <script src="../../../node_modules/@vue/runtime-dom/dist/runtime-dom.global.js"></script> -->
+    <script>
+        // node_modules\@vue\compiler-dom\dist\compiler-dom.global.js
+        const { renderOptions,onBeforeUpdate,onBeforeMount,createRenderer,h,render,Text,Fragment,ref,onMounted,getCurrentInstance} = VueRuntimeDom
+        
+        const MyComp = {
+            props:{
+                address:String,
+                test:Boolean
+            },
+            render(){
+                return h(Text,[this.address])
+            }
+        }
+        const VueComp = {
+            data() {
+                return {
+                    age:333
+                }
+            },
+            props:{
+                name:String
+            },
+            setup(props,{emit}) {
+                const age = ref('4444')
+                setInterval(() =>{
+                    age.value++
+                },3000)
+                // onBeforeUpdate(() => {
+                //     const i = getCurrentInstance()
+                //     console.log(i)
+                // })
+                return {
+                    age,
+                    name:props.name + '哈哈哈'
+                }
+                // return ()=>{
+                //     return h(Fragment,{onClick:() => emit('xxx','ok')},[
+                //         h('div',this.$slots.hhh(),age)
+                //     ])
+                // }
+            },
+            render(){
+                // debugger
+                
+                // // 这里的 this 就是父组件的实例对象的代理，通过绑定 render.call(instance.proxy)
+                return h(Fragment,{onClick:() => emit('xxx','ok')},[
+                        h('div',this.$slots.hhh()),
+                        h(MyComp,{address:'ssssss'})
+                    ])
+            }
+        }
+        render(h(VueComp,null,{
+            hhh:()=> h('h1',['ok'])
+        }),app)
+
+
+
+
+
+    </script>
+    
+</body> 
+</html>

@@ -1,0 +1,15 @@
+{
+    "name": "@vue/compiler-core",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "buildOptions": {
+      "name": "VueCompilerCore",
+      "formatS":[
+        "globals",
+        "cjs",
+        "es-bundler"
+      ]
+    }
+  }
+  

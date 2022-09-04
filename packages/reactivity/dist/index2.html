@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <!-- <script src="../../../node_modules/@vue/reactivity/dist/reactivity.global.js"></script> -->
+    <script src="./reactivity.global.js"></script>
+    <script>
+        let waiting = false
+        const { effect, reactive } = VueReactivity;
+        const state = reactive({name:'小王',age:18})
+        console.log("🚀 ~ file: index.html ~ line 17 ~ state", state)
+
+        let runner =  effect(()=>{
+            app.innerHTML = state.name + "变化了鸭" + state.age
+        },{
+            scheduler(){
+                console.log("runing")
+                if(!waiting){
+                    waiting = true
+                    setTimeout(()=>{
+                        runner()
+                        waiting = false
+                    },2000)
+                }
+            }
+        })
+
+        state.age = 1000
+        state.age = 1300
+
+
+
+    </script>
+</body>
+</html>

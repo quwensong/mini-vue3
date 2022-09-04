@@ -1,0 +1,20 @@
+{
+  "name": "realize_Vue3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev3": "node scripts/dev.js compiler-core -f global",
+    "dev2": "node scripts/dev.js runtime-dom -f global",
+    "dev1": "node scripts/dev.js reactivity -f global"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "esbuild": "^0.14.48",
+    "minimist": "^1.2.6",
+    "typescript": "^4.7.4",
+    "vue": "^3.2.37"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="./runtime-dom.global.js"></script>
+    <!-- <script src="../../../node_modules/@vue/runtime-dom/dist/runtime-dom.global.js"></script> -->
+    <script>
+        // node_modules\@vue\compiler-dom\dist\compiler-dom.global.js
+        const { renderOptions,createRenderer,h,render,Text,Fragment,ref} = VueRuntimeDom
+        
+        const MyComp = {
+            props:{
+                address:String,
+                test:Boolean
+            },
+            render(){
+                return h(Text,[this.address])
+            }
+        }
+        const VueComp = {
+            // data() {
+            //     return {
+            //         age:333
+            //     }
+            // },
+            props:{
+                name:String
+            },
+            setup(props) {
+                const age = ref('4444')
+                setTimeout(() =>{
+                    age.value++
+                },3000)
+                // return {
+                //     age,
+                //     name:props.name + '哈哈哈'
+                // }
+                return ()=>{
+                    return h(MyComp,[age.value,age.value])
+                }
+            }
+            // render(){
+            //     return h('p',
+            //         this.name+this.age
+            //     )
+            // }
+        }
+        render(h(VueComp,{name:'小明'}),app)
+    </script>
+    
+</body> 
+</html>

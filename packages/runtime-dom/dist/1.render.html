@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script src="./runtime-dom.global.js"></script>
+    <script>
+        const { renderOptions,createRenderer,h,render,Text,Fragment} = VueRuntimeDom
+        // const MyComp 
+
+        const VueComp = {
+            data(){
+                // console.log(this)
+                return {
+                    name:3,
+                    age:111
+                }
+            },
+            props:{
+                address:String,
+                obj:{}
+            },
+            render(){
+                // setTimeout(()=>{
+                //     this.age++
+                //     this.name++
+
+                // },2000)
+                return h(Fragment,['sss',h(MyComp)])
+            }
+        }
+                
+        render(h(VueComp,{address:'浙江省',id:'666',name:'小明',obj:{a:22}}),app)
+        // render(h('h2',{style:{color:'green'}},[
+        //     h('h1',{key:'a'},'a'),
+        //     h('h1',{key:'b'},'b'),
+
+        //     h('h1',{key:'c'},'c'),
+        //     h('h1',{key:'d'},'d'),
+        //     h('h1',{key:'e'},'e'),
+
+        //     h('h1',{key:'f'},'f'),
+        //     h('h1',{key:'g'},'g')
+        // ]),app)
+
+        // setTimeout(()=>{
+        //     render(h('h2',{style:{background:'red'}},[
+        //     h('h1',{key:'a'},'a'),
+        //     h('h1',{key:'b'},'b'),
+
+        //     h('h1',{key:'e'},'e'),
+        //     h('h1',{key:'c'},'c'),
+        //     h('h1',{key:'d'},'d'),
+        //     h('h1',{key:'h'},'h'),
+
+        //     h('h1',{key:'f'},'f'),
+        //     h('h1',{key:'g'},'g'),
+
+        //     ]),app)
+        // },3_000)
+
+// let data = function(){
+//     console.log(this)
+//     return {
+//         name:'ssss'
+//     }
+// }
+
+// let obj = {
+//     data:{}
+// }
+
+// let proxy = new Proxy(obj,{
+//     get(target,key){
+//         return target[key]
+//     },
+//     set(target,key,value){
+//         target[key] = value
+//         return true
+//     }
+// })
+// instance.data = reactive(data.call(instance.proxy))
+// let res = data.call(proxy)
+
+// res.name
+
+
+
+
+
+
+    </script>
+    
+</body> 
+</html>
